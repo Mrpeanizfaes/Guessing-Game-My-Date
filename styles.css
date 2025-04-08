@@ -1,0 +1,121 @@
+body {
+  font-family: "Digital Paper", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+  font-size: 50px;
+}
+
+.question-container {
+  display: flex;
+  font-weight: 600;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+  letter-spacing: 0.2rem;
+  user-select: none;
+  transition: all 1s linear;
+}
+
+.question-container input {
+  font-weight: 600;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: center;
+  letter-spacing: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  color: #fff;
+  background-color: transparent;
+}
+
+.question-container input:focus {
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 70%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  user-select: none;
+}
+
+.letter {
+  --translateZ: 50px;
+  font-size: inherit;
+  padding: 15px;
+  font-weight: 600;
+  line-height: 3;
+  transition: all 0.6s linear;
+  opacity: 0.1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.down {
+  transform: translateY(250px) scale(1.1);
+}
+
+.go {
+  transform: translateZ(-1000px);
+  opacity: 0;
+}
+
+.selected {
+  opacity: 1;
+}
+
+.right {
+  opacity: 1;
+  color: green;
+}
+
+.wrong {
+  opacity: 1;
+  color: red;
+}
+
+.letter:hover {
+  opacity: 1;
+  transform: translateZ(var(--translateZ));
+}
+
+.letter:active {
+  transform: scale(0.8);
+}
+
+.letter:hover + * {
+  opacity: 0.7;
+  transform: rotateY(20deg) translateZ(calc(var(--translateZ) * 0.2));
+}
+
+.letter:hover + * + * {
+  opacity: 0.4;
+  transform: rotateY(15deg) translateZ(calc(var(--translateZ) * 0.2));
+}
+
+.letter:has(+ *:hover) {
+  opacity: 0.7;
+  transform: rotateY(-20deg) translateZ(calc(var(--translateZ) * 0.2));
+}
+
+.letter:has(+ * + *:hover) {
+  opacity: 0.3;
+  transform: rotateY(-15deg) translateZ(calc(var(--translateZ) * 0.2));
+}
